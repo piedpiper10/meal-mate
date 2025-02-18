@@ -1,13 +1,14 @@
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }),
-  React.createElement("h1", {}, "I'm an h1 tag"),
-]);
-console.log("check for the parent", parent);
-const heading = React.createElement(
-  "h1",
-  { id: "heading" },
-  "Hello World from the React"
-);
-console.log(heading);
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { jsx } from "react/jsx-runtime";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+const jsxHeading = () => {
+  return <h1>yo i'm from functional component</h1>;
+};
+
+const HeadigCompnent = () => {
+  return <h1>N amasthe react functional component</h1>;
+};
+
+root.render(<HeadigCompnent />);
