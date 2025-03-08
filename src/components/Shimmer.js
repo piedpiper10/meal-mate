@@ -1,7 +1,7 @@
 const Shimmer = () => {
   let cards = [];
   for (let i = 0; i <= 10; i++) {
-    cards.push(<div className="shimmer-card"></div>);
+    cards.push(<div className="shimmer-card" key={i}></div>);
   }
 
   return <div className="shimmer-container">{cards}</div>;

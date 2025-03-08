@@ -38,6 +38,7 @@ const Body = () => {
     }
   }
 
+  console.log("check the body component");
   const onLineStatus = useOnlineStatus();
 
   if (onLineStatus === false)
@@ -53,11 +54,11 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="flex m-4 p-4 items-center">
+        <div>
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black"
             value={inputValue}
             onChange={(e) => {
               console.log(e.target.value);
@@ -66,34 +67,39 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              setFilteredRestaurants(
-                listOfRestaurants.filter((restaurant) => {
-                  console.log(restaurant.info.name);
-                  return restaurant.info.name
+              const filteredRestaurants = listOfRestaurants.filter(
+                (restaurant) =>
+                  restaurant.info.name
                     .toLowerCase()
-                    .includes(inputValue.toLowerCase());
-                })
+                    .includes(inputValue.toLowerCase())
               );
+              setFilteredRestaurants(filteredRestaurants);
             }}
+            className="px-4 py-2 m-4 bg-green-100 rounded-lg"
           >
             search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredRestaurants = listOfRestaurants.filter(
-              (restaurant) => restaurant.info.avgRating > 4.5
-            );
-            setFilteredRestaurants(filteredRestaurants);
-          }}
-        >
-          Top Rated restaurants
-        </button>
+        <div>
+          <button
+            className="px-4 py-2 bg-gray-100 rounded-lg"
+            onClick={() => {
+              const filteredRestaurants = listOfRestaurants.filter(
+                (restaurant) => restaurant.info.avgRating > 4.5
+              );
+              setFilteredRestaurants(filteredRestaurants);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredRestaurants.map((restaurant) => (
-          <div onClick={() => navigate("restaurantMenu/" + restaurant.info.id)}>
+          <div
+            onClick={() => navigate("restaurantMenu/" + restaurant.info.id)}
+            key={restaurant.info.id}
+          >
             <RestaurantCard resInfo={restaurant} key={restaurant.info.id} />
           </div>
         ))}

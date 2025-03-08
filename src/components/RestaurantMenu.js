@@ -30,7 +30,7 @@ const RestaurantMenu = () => {
       <h3>{costForTwoMessage}</h3>
       <h3>Menu</h3>
       {itemCards?.map((card) => (
-        <li>{card?.card?.info?.name}</li>
+        <li key={card?.card?.info?.id}>{card?.card?.info?.name}</li>
       ))}
     </div>
   );

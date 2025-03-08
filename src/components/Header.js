@@ -6,25 +6,29 @@ const Header = () => {
   console.log("check header component render".btnNameReact);
   const [btnNameReact, setBtnNameReact] = useState("Login");
   return (
-    <div className="header">
-      <div className="logo-cotainer">
-        <img className="logo" src={LOGO_URL} />
+    <div className="flex justify-between m-4 p-4 border border-solid border-black bg-pink-200 shadow-lg">
+      <div>
+        <img className="w-40" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-4">
             <Link to="/"> Home </Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/about">About US</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/contact">Contact US</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/cart">Cart</Link>
           </li>
+          <li className="px-4">
+            <Link to="/grocery">Grocery</Link>
+          </li>
           <button
+            className="px-4"
             onClick={() =>
               btnNameReact.includes("Login")
                 ? setBtnNameReact("Logout")
